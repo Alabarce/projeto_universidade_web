@@ -51,7 +51,9 @@ CREATE TABLE aluno (
     id_aluno INT IDENTITY(1,1) PRIMARY KEY,
     nome VARCHAR(200) NOT NULL,
     cidade VARCHAR(100) NOT NULL,
-    estado VARCHAR(2) DEFAULT 'SP' CHECK (estado IN ('SP', 'RJ', 'MG', 'ES', 'PR', 'MS', 'BA', 'RS', 'SC', 'GO', 'MT', 'MS')),
+    estado VARCHAR(2) DEFAULT 'SP' CHECK (estado IN ('AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG',
+'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP',
+'SE', 'TO', 'DF')),
     data_nascimento DATE,
     data_cadastro DATETIME DEFAULT GETDATE(),
     status VARCHAR(20) DEFAULT 'ativo' CHECK (status IN ('ativo', 'inativo', 'trancado'))
