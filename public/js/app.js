@@ -825,3 +825,21 @@ function filterTable(entityType) {
 function refreshData() {
   loadAllData();
 }
+
+document.getElementById("applyEnemDiscount").addEventListener("click", () => {
+  const score = Number(document.getElementById("enemScore").value);
+  let discount = 0;
+  if (score > 500 && score <= 650) discount = 0.15;
+  else if (score > 650 && score <= 750) discount = 0.30;
+  else if (score > 750) discount = 0.40;
+
+  const cells = document.querySelectorAll("tbody td:nth-child(5)");
+  cells.forEach(c => {
+    const original = c.dataset.original === undefined
+      ? (c.dataset.original = c.innerText.replace(/[^\d.]/g, ""))
+      : c.dataset.original;
+    const base = Number(original);
+    const final = base * (1 - discount);
+    c.innerText = `R$ ${final.toFixed(2)}`;
+  });
+});
